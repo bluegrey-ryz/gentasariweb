@@ -1,0 +1,1 @@
+var json_Pemerintahan_8 = {"type":"FeatureCollection","name":"Pemerintahan_8","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","Nama.tmpat":"Balai Desa Gentasari"},"geometry":{"type":"Point","coordinates":[109.219481931008957,-7.60176279179778]}}]}

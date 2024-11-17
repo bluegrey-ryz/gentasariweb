@@ -1,0 +1,1 @@
+var json_Lapangan_12 = {"type":"FeatureCollection","name":"Lapangan_12","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"id":"1","nma.lpngn":"Panti Krida Angga Desa Gentasari"},"geometry":{"type":"Point","coordinates":[109.216042887755421,-7.600483596840923]}}]}

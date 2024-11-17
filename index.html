@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <link rel="stylesheet" href="./resources/ol.css">
+        <link rel="stylesheet" href="resources/fontawesome-all.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/horsey.min.css">
+        <link rel="stylesheet" type="text/css" href="resources/ol3-search-layer.min.css">
+        <link href="resources/ol-geocoder.min.css" rel="stylesheet">
+        <link rel="stylesheet" href="./resources/ol-layerswitcher.css">
+        <link rel="stylesheet" href="./resources/qgis2web.css">
+        <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .navbar {
+            background-color: #6aa9ff;
+            padding: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        .navbar a:hover {
+            color: #ffdd57;
+        }
+        .navbar i {
+            margin-right: 5px;
+        }
+        .hero {
+            background-image: url('https://placehold.co/1366x400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+        .hero h1 {
+            font-size: 48px;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+            font-weight: bold;
+        }
+        .hero p {
+            font-size: 18px;
+            margin: 10px 0 0;
+            position: relative;
+            z-index: 1;
+
+        }
+        .content {
+            background-color: #e6f0ff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .content h2 {
+            font-size: 24px;
+            margin: 0 0 10px;
+            color: #00070e;
+            font-weight: bold;
+        }
+        .content p {
+            font-size: 16px;
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+        .content i {
+            color: #000408;
+            margin-right: 10px;
+        }
+        .content img {
+            max-width: 100%;
+            border-radius: 8px;
+
+        }
+        
+            #map {
+                width: 100%;
+                height: 500px;
+                border: 2px solid #ddd; /* Light grey border */
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+            
+            .map-container {
+                width: 80%;
+                margin: 30px auto;
+                padding: 15px;
+                background-color: #f0f7ff; /* Light blue background */
+                border-radius: 8px;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            }
+
+            .hero {
+            background-image: url('https://placehold.co/1366x400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+            .hero h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+        .hero p {
+            font-size: 18px;
+            margin: 10px 0 0;}
+
+            .content {
+            background-color: #e6f0ff;
+            padding: 20px;
+        }
+        .content h2 {
+            font-size: 24px;
+            margin: 0 0 10px;
+        }
+        .content p {
+            font-size: 16px;
+            margin: 10px 0;
+        }
+        .content i {
+            color: #007bff;
+            margin-right: 10px;
+        }
+
+
+            .footer {
+                text-align: center;
+                padding: 10px;
+                font-size: 14px;
+                background-color: #6c93c0;
+                color: white;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+
+        .ol-control > * {
+            background-color: #f8f8f8!important;
+            color: #444444!important;
+            border-radius: 0px;
+        }
+        .ol-attribution a, .gcd-gl-input::placeholder, .search-layer-input-search::placeholder {
+            color: #444444!important;
+        }
+        .search-layer-input-search {
+            background-color: #f8f8f8!important;
+        }
+        .ol-control > *:focus, .ol-control >*:hover {
+            background-color: rgba(248, 248, 248, 0.7)!important;
+        } 
+        .ol-control {
+            background-color: rgba(255,255,255,.4) !important;
+            padding: 2px !important;
+        } 
+        </style>
+        <title>Peta Desa Gentasari</title>
+    </head>
+    <title>Desa Gentasari</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+</head>
+<body class="bg-gray-100">
+    <header class="bg-blue-300 text-white p-4 flex justify-between items-center">
+        <div class="flex items-center space-x-4">
+            <i class="fas fa-map-marker-alt"></i>
+            <span class="font-bold">Desa Gentasari</span>
+            <nav class="flex space-x-4">
+                <a class="hover:underline" href="#beranda"><i class="fas fa-home"></i> Beranda</a>
+                <a class="hover:underline" href="#profil"><i class="fas fa-info-circle"></i> Profil</a>
+                <a class="hover:underline" href="#Peta"><i class="fas fa-map"></i> Peta</a>
+                <a class="hover:underline" href="#Tentang"><i class="fas fa-users"></i> Tentang</a>
+            </nav>
+        </div>
+        <i class="fas fa-cog"></i>
+    </header>
+    <main>
+        <div id="beranda" class="relative">
+            <img src="https://storage.googleapis.com/a1aa/image/7r9h6GkV35Y9MxMqQOkRjATOirx1fZVcsUGP4UAbjiaQ754JA.jpg" alt="Image of a traditional building in Desa Gentasari" class="w-full h-96 object-cover"/>
+            <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white p-4">
+                <h1 class="text-5xl font-bold mb-4">Selamat Datang di Desa Gentasari</h1>
+                <p class="text-xl max-w-2xl">Desa Gentasari, terletak di Kecamatan Kroya, Kabupaten Cilacap, Jawa Tengah. Mempunyai Visi Terwujudnya Tata Kelola Pemerintahan Yang Amanah, Jujur, Inspiratif dan Bermartartabat (AJIB), Guna Mewujudkan Gentasari Yang Adil, Makmur dan Sejahtera.
+                </p>
+            </div>
+        </div>
+        <section id="profil" class="p-8 bg-blue-100 flex items-start">
+            <i class="fas fa-info-circle text-4xl text-blue-500 mr-4"></i>
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Profil Desa Gentasari</h2>
+                <p class="mb-4 text-lg text-justify">Desa Gentasari berdiri pada tahun 1885 Masehi, yang awalnya merupakan bagian dari Desa Paberasan. Desa ini dipimpin pertama kali oleh Ki Dipakarsa, yang memimpin babad hutan di wilayah “Grumbul Gentan,” sebuah kawasan hutan yang dulunya disebut “Alas Cisemut.” Nama Desa Gentasari diambil dari suara "genta" (lonceng sapi) yang terdengar saat proses pembukaan lahan berlangsung. Ki Dipakarsa, dikenal sebagai Kyai Mendali karena jasanya membangun saluran irigasi pertama di desa, merupakan tokoh penting dalam membangun Desa Gentasari. Kepemimpinan Desa Gentasari kemudian diteruskan oleh keturunan beliau dan tokoh-tokoh lainnya hingga saat ini, dengan Kepala Desa terkini, Budi Harsono, yang mulai menjabat pada tahun 2019. Desa ini memiliki sejarah panjang dalam sektor pertanian sebagai lumbung padi Kabupaten Cilacap dan pernah menjadi sentra jamu tradisional nasional. Desa ini juga menjadi lokasi Museum Soesilo Soedarman, menambah nilai historis dan budaya Gentasari.</p>
+            </div>
+        </section>
+        <div class="content">
+            <h2><i class="fas fa-map"></i>Peta Desa Gentasari</h2>
+            <p>Berikut adalah peta Desa Gentasari yang menunjukkan lokasi-lokasi penting di desa ini. Peta ini dapat membantu Anda menemukan tempat-tempat di Desa Gentasari, seperti balai desa, sekolahan,pondok pesantren, masjid, mushola, bengkel dan lainnya.</p>
+        </div>
+    
+
+        <!-- Bagian Peta Interaktif dalam Box -->
+        <div class="map-container" id="Peta">
+            <div id="map">
+            <div id="popup" class="ol-popup">
+                <a href="#" id="popup-closer" class="ol-popup-closer"></a>
+                <div id="popup-content"></div>
+            </div>
+        </div>
+        </div>
+    
+        
+        <section id="Tentang" class="p-8 bg-green-100 flex items-start">
+            <i class="fas fa-users text-4xl text-green-500 mr-4"></i>
+            <div>
+                <h2 class="text-3xl font-bold mb-4">Tentang Desa Gentasari</h2>
+                <p class="mb-4 text-lg text-justify">Desa Gentasari merupakan salah satu desa di Kecamatan Kroya, Kabupaten Cilacap, Jawa Tengah. Berdiri pada tahun 1885, desa ini memiliki sejarah panjang dan kaya akan nilai budaya. Nama Gentasari diambil dari peristiwa saat pembukaan hutan (babad alas) di kawasan “Grumbul Gentan,” di mana terdengar suara "genta," sebuah lonceng sapi yang menggema, hingga akhirnya disepakati menjadi nama desa. Terletak sekitar 7 km dari pusat Kecamatan Kroya, Gentasari mudah diakses menggunakan angkutan umum maupun kendaraan pribadi.
+                    Sebagian besar penduduk Desa Gentasari menggantungkan hidupnya pada sektor pertanian, menjadikan desa ini salah satu lumbung padi di Kabupaten Cilacap. Selain padi, masyarakat juga menanam palawija di pekarangan dan menghasilkan berbagai produk olahan pangan. Di era 1990-an, Desa Gentasari dikenal sebagai pusat produksi jamu tradisional yang berhasil menembus pasar nasional dan internasional, menjadi penggerak utama ekonomi desa pada masa itu. Hingga kini, semangat kerja keras dan inovasi masyarakat tetap menjadi ciri khas desa ini.</p>
+                <p class="mb-4 text-lg text-justify">Selain potensi ekonominya, Desa Gentasari juga memiliki fasilitas pendidikan yang memadai, seperti SMP Negeri 4 Kroya dan SMA Negeri 2 Kroya, yang menjadi tempat menimba ilmu bagi generasi muda desa. Dalam bidang kesehatan, keberadaan Puskesmas Kroya II memberikan akses layanan kesehatan bagi warga. Desa ini juga dikenal sebagai destinasi sejarah dengan adanya Museum Soesilo Soedarman, yang dulunya merupakan kediaman leluhur Jenderal Soesilo Soedarman. Museum ini menyimpan nilai historis yang berharga sekaligus menjadi kebanggaan masyarakat Gentasari.
+                    Keunikan Desa Gentasari tidak hanya terletak pada sejarah dan ekonominya, tetapi juga pada keberagaman budaya dan semangat gotong royong yang tetap terjaga hingga kini. Dengan kekayaan alam, sejarah, dan budaya, Desa Gentasari tidak hanya menjadi tempat tinggal tetapi juga pusat kehidupan yang dinamis bagi warganya, menjadikannya salah satu desa yang berkontribusi penting bagi pembangunan Kabupaten Cilacap.</p>
+            </div>
+        </section>
+    </main>
+</p>
+</div>
+
+<!-- Footer Dibuat oleh -->
+<div class="footer">
+    <p> © 2024 || Peta Desa Gentasari || Dibuat oleh: Atikah Melitiana</p>
+</div>
+
+
+        <script src="resources/qgis2web_expressions.js"></script>
+<script src="resources/proj4.js"></script>
+        <script>proj4.defs('EPSG:3857','+proj=merc +a=6378137 +b=6378137 +lat_ts=0 +lon_0=0 +x_0=0 +y_0=0 +k=1 +units=m +nadgrids=@null +wktext +no_defs');</script>
+        <script src="./resources/functions.js"></script>
+        <script src="./resources/ol.js"></script>
+        <script src="resources/horsey.min.js"></script>
+        <script src="resources/ol3-search-layer.js"></script>
+        <script src="./resources/ol-layerswitcher.js"></script>
+        <script src="resources/ol-geocoder.js"></script>
+        <script src="layers/ADMINISTRASIDESA_AR_25K_1.js"></script><script src="layers/Pesawahan_2.js"></script><script src="layers/RTRW_3.js"></script><script src="layers/gentasari_poly_4.js"></script><script src="layers/gentasari_line_5.js"></script><script src="layers/NamaGang_6.js"></script><script src="layers/Makam_7.js"></script><script src="layers/Pemerintahan_8.js"></script><script src="layers/Rumah_9.js"></script><script src="layers/Kesehatan_10.js"></script><script src="layers/Pendidikan_11.js"></script><script src="layers/Lapangan_12.js"></script><script src="layers/Museum_13.js"></script><script src="layers/RelKereta_14.js"></script><script src="layers/Jalan_15.js"></script><script src="layers/Bengkel_16.js"></script><script src="layers/Masjid_17.js"></script>
+        <script src="styles/ADMINISTRASIDESA_AR_25K_1_style.js"></script><script src="styles/Pesawahan_2_style.js"></script><script src="styles/RTRW_3_style.js"></script><script src="styles/gentasari_poly_4_style.js"></script><script src="styles/gentasari_line_5_style.js"></script><script src="styles/NamaGang_6_style.js"></script><script src="styles/Makam_7_style.js"></script><script src="styles/Pemerintahan_8_style.js"></script><script src="styles/Rumah_9_style.js"></script><script src="styles/Kesehatan_10_style.js"></script><script src="styles/Pendidikan_11_style.js"></script><script src="styles/Lapangan_12_style.js"></script><script src="styles/Museum_13_style.js"></script><script src="styles/RelKereta_14_style.js"></script><script src="styles/Jalan_15_style.js"></script><script src="styles/Bengkel_16_style.js"></script><script src="styles/Masjid_17_style.js"></script>
+        <script src="./layers/layers.js" type="text/javascript"></script> 
+        <script src="./resources/Autolinker.min.js"></script>
+        <script src="./resources/qgis2web.js"></script>
+    </body>
+</html>
